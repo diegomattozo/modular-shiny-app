@@ -6,15 +6,8 @@ LinkedDataTableUi <- function(id) {
     )
 }
 
-LinkedDataTable <- function(input, output, session,
-                              selectedVars, eventBtn) {
-  getSelectedVars <- eventReactive(eventBtn(), {
-    manager$dispatch(selectTableVars(selectedVars()))
-    globalState$selectedTableVars
-  })
-  
+LinkedDataTable <- function(input, output, session, dataset) {
   output$selectedVarsTable <- DT::renderDataTable({
-    getSelectedVars()
     dataset[, globalState$selectedTableVars]
   })
 }

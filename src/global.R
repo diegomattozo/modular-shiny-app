@@ -3,15 +3,19 @@ library(ggplot2)
 library(datasets)
 library(futile.logger)
 
+dataset <- WorldPhones
+
 source("components/LinkedBarPlot.R")
 source("components/LinkedDataTable.R")
+source("components/BarPlotInput.R")
+source("components/DataTableInput.R")
 source("actions/actions.R")
 source("reducers/reducers.R")
 source("server.R")
 source("ui.R")
 
-dataset <- WorldPhones
-globalState <- reactiveValues(selectedColName="",  
+
+globalState <- reactiveValues(selectedColName="Europe",  
                               selectedTableVars = colnames(dataset))
 
 StateManager <- function(reducers) {

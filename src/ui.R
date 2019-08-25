@@ -3,13 +3,8 @@ ui <- fluidPage(
   
   sidebarLayout(      
     sidebarPanel(
-      selectInput("selectedColName", "Variable:", 
-                  choices=colnames(dataset)),
-      varSelectInput("selectedTableVars", data = dataset,
-                     selected = colnames(dataset),
-                     label = "Select table variables", 
-                     multiple = T),
-      actionButton("selectTableVarsBtn", "Select variables")),
+      BarPlotInputUI("barPlotInput", dataset=dataset),
+      DataTableInputUI("dataTableInput", dataset=dataset)),
     mainPanel(
       LinkedBarPlotUI("app"),
       LinkedDataTableUi("table")
